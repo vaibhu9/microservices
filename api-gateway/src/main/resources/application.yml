@@ -1,0 +1,28 @@
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+
+spring:
+    cloud:
+      gateway:
+        routes:
+          - id: service-a
+            uri: lb://service-a
+            predicates:
+            - Path=/api/service-a/**
+
+          - id: service-b
+            uri: lb://service-b
+            predicates:
+            - Path=/api/service-b/**
+
+          - id: service-c
+            uri: lb://service-c
+            predicates:
+             - Path=/api/service-c/**
+
+          - id: service-d
+            uri: lb://service-d
+            predicates:
+             - Path=/api/service-d/**
